@@ -10,12 +10,11 @@ const useStyles = makeStyles({
         padding: 16,
         paddingTop: 16,
         background: 'rgba(255, 255, 255, .1)',
-        borderRadius: 8,
         backgroundClip: 'padding-box',
         backdropFilter: 'blur(10px)',
         position: '-webkit-sticky',
         position: 'sticky',
-        top: 20,
+        top:0,
         marginBottom: 45
     },
     link: {
