@@ -1,4 +1,4 @@
-#Algo Trainer
+# Algo Trainer
 ## Here's the plan
 https://drive.google.com/file/d/18wpIwMlPKdN4x3iNGWFpOw3rWSZubPOB/view?usp=sharing
 
