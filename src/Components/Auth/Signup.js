@@ -105,8 +105,11 @@ const Signup = () => {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In
+                        Sign Up
                     </Button>
+                        <Link href="#" variant="body2">
+                            {"Already have an account? Sign Ip"}
+                        </Link>
                 </form>
             </Box>
             <Box mt={8}>
