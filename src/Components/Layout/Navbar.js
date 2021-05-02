@@ -1,4 +1,4 @@
-import {Box, Typography, ButtonGroup, Button} from '@material-ui/core';
+import {Box, ButtonGroup, Button} from '@material-ui/core';
 import {NavLink} from 'react-router-dom';
 import {makeStyles} from '@material-ui/core';
 

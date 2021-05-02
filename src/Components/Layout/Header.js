@@ -1,6 +1,5 @@
 import {Box, Typography} from '@material-ui/core';
 import {Link} from 'react-router-dom';
-import { StayPrimaryLandscape } from '@material-ui/icons';
 import {makeStyles} from '@material-ui/core';
 import Navbar from './Navbar';
 
@@ -13,7 +12,7 @@ const useStyles = makeStyles({
         backgroundClip: 'padding-box',
         backdropFilter: 'blur(10px)',
         position: '-webkit-sticky',
-        position: 'sticky',
+        //position: 'sticky',
         top:0,
         marginBottom: 45
     },

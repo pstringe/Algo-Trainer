@@ -13,6 +13,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './Components/Layout/Header';
 import Home from './Views/Home/Home';
 import Signup from './Components/Auth/Signup';
+import { AuthProvider } from './Context/AuthContext';
+import app from './firebase';
 
 const theme = createMuiTheme({
     palette: {
@@ -44,6 +46,7 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const classes = useStyles();
+  console.log('app', app);
   /*
   ** specify routes using example format starting with default route
   **  auth - (boolean) determines if authentication is requred for this route
@@ -60,6 +63,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme} >
+      <AuthProvider>
       <CssBaseline />
       <Box  className={`App ${classes.root}`} maxWidth='xl' >
         <Router>
@@ -74,6 +78,7 @@ function App() {
           </Container>
         </Router>
       </Box>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
