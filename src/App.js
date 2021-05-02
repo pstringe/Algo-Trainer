@@ -12,7 +12,7 @@ import {
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './Components/Layout/Header';
 import Home from './Views/Home/Home';
-
+import Signup from './Components/Auth/Signup';
 
 const theme = createMuiTheme({
     palette: {
@@ -55,6 +55,7 @@ function App() {
   const routes = [
     {name: 'root', path: '/', component: <Home />, auth: false, show:false},
     {name: 'home', path: '/home', component: <Home />, auth: false, show:true},
+    {name: 'signup', path: '/signup', component: <Signup />, auth: false, show: true},
   ];
 
   return (
