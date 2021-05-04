@@ -124,7 +124,7 @@ const Signup = () => {
                         Sign Up
                     </Button>
                     <Link href="#" variant="body2">
-                        {"Already have an account? Sign Ip"}
+                        {"Already have an account? Log in"}
                     </Link>
                 </form>
             </Box>

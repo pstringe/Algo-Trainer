@@ -1,5 +1,6 @@
 import { createMuiTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
-
+import Dashboard from './Views/Dashboard';
+import Signin from './Components/Auth/Signin';
 import {
   Container,
   Box,
@@ -59,14 +60,16 @@ function App() {
     {name: 'root', path: '/', component: <Home />, auth: false, show:false},
     {name: 'home', path: '/home', component: <Home />, auth: false, show:true},
     {name: 'signup', path: '/signup', component: <Signup />, auth: false, show: true},
+    {name: 'login', path: '/signin', component: <Signin />, auth: false, show: true},
+
   ];
 
   return (
     <ThemeProvider theme={theme} >
-      <AuthProvider>
       <CssBaseline />
       <Box  className={`App ${classes.root}`} maxWidth='xl' >
         <Router>
+          <AuthProvider>
           <Header className={classes.header} title={siteTitle} items={routes}/>
           <Container>
             <Switch>
@@ -76,9 +79,9 @@ function App() {
               })}          
             </Switch>
           </Container>
+          </AuthProvider>
         </Router>
       </Box>
-      </AuthProvider>
     </ThemeProvider>
   );
 }
