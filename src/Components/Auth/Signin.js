@@ -15,6 +15,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Copyright from './Copyright';
 import {makeStyles} from '@material-ui/core/styles';
 import { findByLabelText } from '@testing-library/dom';
+import { useAuth } from '../../Context/AuthContext';
+import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => {
     return {
@@ -40,8 +43,28 @@ const useStyles = makeStyles(theme => {
     }
 })
 
-const Signup = () => {
+const Signin = () => {
     const classes = useStyles();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const { login } = useAuth();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(cur=> true);
+        try {
+            setError('');
+            await login(email, password);
+            history.push('/dashboard');
+        } catch{
+            setError(cur => 'sign in failed');
+        }
+        setLoading(cur => false);
+    };
     return ( 
         <Box className={classes.root}>
             <CssBaseline />
@@ -54,33 +77,37 @@ const Signup = () => {
                     Sign in
                     </Typography>
                 </Box>
-                <form className={classes.form} noValidate>
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    autoFocus
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                />
-                <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Remember me"
-                />
+                <form onSubmit={(e) => handleSubmit(e)} className={classes.form} noValidate>
+                    <TextField
+                        onChange={(e) => setEmail(cur => e.target.value)}
+                        value={email}
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        onChange={(e) => setPassword(cur => e.target.value)}
+                        value={password}
+                        autoComplete="current-password"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox value="remember" color="primary" />}
+                        label="Remember me"
+                    />
                 <Button
                     type="submit"
                     fullWidth
@@ -111,4 +138,4 @@ const Signup = () => {
     );
 }
  
-export default Signup;
+export default Signin;

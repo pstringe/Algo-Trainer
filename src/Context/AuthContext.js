@@ -20,13 +20,17 @@ export const AuthProvider = ({children}) => {
     }, []);
 
     const signup = (email, password) => {
-        console.log('in signup', signup)
-        auth.createUserWithEmailAndPassword(email, password);
+        return auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    const login = (email, password) => {
+        return auth.signInWithEmailAndPassword(email, password);
     }
 
     const value = {
         user,
-        signup
+        signup,
+        login
     }
 
     return ( 

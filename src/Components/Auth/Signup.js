@@ -4,20 +4,24 @@ import {
     TextField,
     Typography,
     Avatar,
+    Grid,
     Link,
 } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Copyright from './Copyright';
 import {makeStyles} from '@material-ui/core/styles';
+import { findByLabelText } from '@testing-library/dom';
 import { useState } from 'react';
-import { useAuth } from '../../Context/AuthContext';
+import { ConfirmationNumber } from '@material-ui/icons';
+import { signup, useAuth } from '../../Context/AuthContext';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles(theme => {
     return {
         root: {
             width: 500,
-            //margin: 'auto',
+            margin: 'auto',
             borderRadius: 8,
             padding: theme.spacing(2),
             
@@ -45,7 +49,8 @@ const Signup = () => {
     const { signup } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const history = useHistory();
+    
     const handelSubmit = async (e) => {
         e.preventDefault();
         setLoading(cur=> true);
@@ -55,6 +60,7 @@ const Signup = () => {
         try {
             setError('');
             await signup(email, password);
+            history.push('/dashboard');
         } catch{
             setError(cur => 'account creation failed');
         }
@@ -119,12 +125,11 @@ const Signup = () => {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        disabled={loading}
                     >
                         Sign Up
                     </Button>
                     <Link href="#" variant="body2">
-                        {"Already have an account? Log in"}
+                        {"Already have an account? Sign Ip"}
                     </Link>
                 </form>
             </Box>

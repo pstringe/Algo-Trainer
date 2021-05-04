@@ -61,6 +61,7 @@ function App() {
     {name: 'home', path: '/home', component: <Home />, auth: false, show:true},
     {name: 'signup', path: '/signup', component: <Signup />, auth: false, show: true},
     {name: 'login', path: '/signin', component: <Signin />, auth: false, show: true},
+    {name: 'dashboard', path: '/dashboard', component: <Dashboard />, auth: false, show: true},
 
   ];
 
